@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/api',router)
 
 
-// mongoose.connect('mongodb://mughees605:mughees1997@ds163701.mlab.com:63701/es6-mongoose')
+mongoose.connect('mongodb://mughees605:mughees1996@ds117093.mlab.com:17093/user-management')
 app.listen(port,() => {
     console.log(port)
 })
