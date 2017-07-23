@@ -29,8 +29,11 @@ export class UserAuth {
             if(!user){
                 return res.status(404).send();
             }
-
-            return res.status(200).send({status:true,data:user})
+            else {
+                req.session.user = user;
+                return res.status(200).send({status:true,data:user})
+            }
+            
         })
     }
 
@@ -39,6 +42,15 @@ export class UserAuth {
             if(err) throw err;
             res.send({status:true,data:users})
         })
+    }
+
+    static checkLoggedIn(req,res){
+        if(!req.session.user){
+            return res.status(401).send()
+        }
+        else {
+            return res.status(200).send("welcome")
+        }
     }
 
     

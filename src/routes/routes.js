@@ -13,3 +13,5 @@ router.post('/register', UserAuth.register)
 router.post('/login',UserAuth.login)
 
 router.get('/users',UserAuth.getAllUsers)
+
+router.get('/dashboard',UserAuth.checkLoggedIn)
