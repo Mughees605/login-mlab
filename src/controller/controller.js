@@ -23,7 +23,7 @@ export class UserAuth {
         UserModel.findOne({user_id:user_id,password:userPassword},(err,user)=>{
             if(err){
                 throw err;
-               return res.status(500).send();
+               return res.status(500).send({status:false});
             }
 
             if(!user){
