@@ -17,10 +17,10 @@ export class UserAuth {
     } 
 
     static login(req,res){
-        let userName = req.body.username;
+        let user_id = req.body.user_id;
         let userPassword = req.body.password;
 
-        UserModel.findOne({username:userName,password:userPassword},(err,user)=>{
+        UserModel.findOne({user_id:user_id,password:userPassword},(err,user)=>{
             if(err){
                 throw err;
                return res.status(500).send();
