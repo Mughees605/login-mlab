@@ -27,7 +27,7 @@ export class UserAuth {
             }
 
             if(!user){
-                return res.status(404).send();
+                return res.status(404).send({status:false});
             }
             else {
                 req.session.user = user;
