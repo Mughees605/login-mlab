@@ -8,10 +8,12 @@ router.get('/',(req,res)=>{
     res.send("kaka")
 })
 
-router.post('/register', UserAuth.register)
+router.post('/register', UserAuth.register);
 
-router.post('/login',UserAuth.login)
+router.post('/login',UserAuth.login);
 
-router.get('/users',UserAuth.getAllUsers)
+router.post('/patient',UserAuth.storeUserForLoginPerson);
 
-router.get('/dashboard',UserAuth.checkLoggedIn)
+router.get('/users',UserAuth.getAllUsers);
+
+router.get('/dashboard',UserAuth.checkLoggedIn);
