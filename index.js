@@ -4,10 +4,11 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import session from "express-session";
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 const app = express();
 
 const port = process.env.PORT || 4000;
-
+app.use(cors());
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser());
