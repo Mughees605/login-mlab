@@ -4,16 +4,18 @@ import { UserAuth } from '../controller/controller'
 export const router = Router();
 
 
-router.get('/',(req,res)=>{
+router.get('/', (req, res) => {
     res.send("kaka")
 })
 
 router.post('/register', UserAuth.register);
 
-router.post('/login',UserAuth.login);
+router.post('/login', UserAuth.login);
 
-router.post('/patient',UserAuth.storeUserForLoginPerson);
+router.post('/patient', UserAuth.storeUserForLoginPerson);
 
-router.get('/users',UserAuth.getAllUsers);
+router.get('/users', UserAuth.getAllUsers);
 
-router.get('/dashboard',UserAuth.checkLoggedIn);
+router.get('/dashboard', UserAuth.checkLoggedIn);
+
+router.get('/logout', UserAuth.logout);

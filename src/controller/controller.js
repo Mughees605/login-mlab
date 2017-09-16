@@ -77,5 +77,19 @@ export class UserAuth {
         }
     }
 
+    static logout(req,res, next){
+      if(req.session){
+          console.log(req.session,"re---------------------------------------------------------------")
+          req.session.destroy((err)=>{
+              if(err){
+                  return next(err)
+              }
+              else{
+                  return res.status(200).send('logout')
+              }
+          })
+      }
+    }
+
 
 }
