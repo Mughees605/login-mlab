@@ -12,7 +12,7 @@ router.post('/register', UserAuth.register);
 
 router.post('/login', UserAuth.login);
 
-router.post('/patient', UserAuth.storeUserForLoginPerson);
+router.post('/patient/:uid', UserAuth.storeUserForLoginPerson);
 
 router.get('/users', UserAuth.getAllUsers);
 

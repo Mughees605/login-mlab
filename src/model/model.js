@@ -7,9 +7,13 @@ const UserSchema = new mongooose.Schema({
 })
 
 export const pSchema = new mongooose.Schema({
-    username: { type: String },
-    fullname: { type: String },
-    address: { type: String },
+    firstname: { type: String },
+    lastname: { type: String },
+    patientdis: { type: String },
+    patientmed: { type: String },
+    cost: { type: Number },
+    Date: { type: String}
+
 })
 
 export const UserModel = mongooose.model('myuser', UserSchema);

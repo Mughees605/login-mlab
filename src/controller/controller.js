@@ -40,13 +40,17 @@ export class UserAuth {
     }
 
     static storeUserForLoginPerson(req, res) {
-        const { username, fullname, address, userLoggedIn } = req.body;
-        let patientModel = mongooose.model(userLoggedIn, pSchema);
+        let { uid } = req.params;
+        const { firstname, lastname, patientdis, patientmed, cost, Date} = req.body;
+        let patientModel = mongooose.model(uid, pSchema);
 
         let newPatientData = {
-            username,
-            fullname,
-            address
+            firstname,
+            lastname,
+            patientdis,
+            patientmed,
+            cost,
+            Date
         }
 
         const newPatient = new patientModel(newPatientData)
