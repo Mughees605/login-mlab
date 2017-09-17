@@ -6,14 +6,13 @@ const UserSchema = new mongooose.Schema({
     user_id: { type: String, unique: true }
 })
 
-export const pSchema = new mongooose.Schema({
+export const PatientSchema = new mongooose.Schema({
     firstname: { type: String },
     lastname: { type: String },
     patientdis: { type: String },
     patientmed: { type: String },
     cost: { type: Number },
     Date: { type: String}
-
 })
 
 export const UserModel = mongooose.model('myuser', UserSchema);

@@ -1,5 +1,7 @@
 import { Router } from 'express';
-import { UserAuth } from '../controller/controller'
+import { UserAuth } from '../controller/controller';
+import { PatientController } from '../controller/patient.controller'
+
 
 export const router = Router();
 
@@ -12,12 +14,14 @@ router.post('/register', UserAuth.register);
 
 router.post('/login', UserAuth.login);
 
-router.post('/patient/:uid', UserAuth.storeUserForLoginPerson);
-
-router.post('/doctor/:model', UserAuth.getSelectedDoctor);
-
+router.get('/logout', UserAuth.logout);
+// get all doctors
 router.get('/users', UserAuth.getAllUsers);
+// store selected doctor user
+router.post('/patient/add/:did', PatientController.storeUserForLoginPerson);
+// get selectod doctor Patients @params did is doctor ID
+router.post('/doctor/:did', PatientController.getSelectedDoctorUsers);
+// delete selected doctor Patients data @params did is doctor ID and pid is patient id
+router.delete('/patient/delete/:did/:pid', PatientController.deleteSelectedDoctorUser);
 
 router.get('/dashboard', UserAuth.checkLoggedIn);
-
-router.get('/logout', UserAuth.logout);

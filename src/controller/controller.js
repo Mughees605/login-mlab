@@ -1,4 +1,4 @@
-import { UserModel, pSchema } from '../model/model';
+import { UserModel, PatientSchema } from '../model/model';
 import mongooose from "mongoose";
 
 
@@ -40,45 +40,17 @@ export class UserAuth {
         })
     }
 
-    static storeUserForLoginPerson(req, res) {
-        let { uid } = req.params;
-        const { firstname, lastname, patientdis, patientmed, cost, Date} = req.body;
-        let patientModel = mongooose.model(uid, pSchema);
-
-        let newPatientData = {
-            firstname,
-            lastname,
-            patientdis,
-            patientmed,
-            cost,
-            Date
+    static logout(req, res, next) {
+        if (req.session) {
+            req.session.destroy((err) => {
+                if (err) {
+                    return next(err)
+                }
+                else {
+                    return res.status(200).send('logout')
+                }
+            })
         }
-
-        const newPatient = new patientModel(newPatientData)
-
-        newPatient.save((err, record) => {
-            if (err) {
-                res.send({ status: false })
-            }
-            else {
-                res.send({ status: true, data: record })
-            }
-        })
-    }
-
-    static getAllUsers(req, res) {
-        UserModel.find({}, (err, users) => {
-            if (err) throw err;
-            res.send({ status: true, data: users })
-        })
-    }
-
-    static getSelectedDoctor(req,res){
-        let model = req.params.model;
-        let patientModel = mongooose.model(model,pSchema);        
-        patientModel.find({},(err,users)=>{
-            res.send({status: true, data:users})
-        })
     }
 
     static checkLoggedIn(req, res) {
@@ -90,19 +62,10 @@ export class UserAuth {
         }
     }
 
-    static logout(req,res, next){
-      if(req.session){
-          console.log(req.session,"re---------------------------------------------------------------")
-          req.session.destroy((err)=>{
-              if(err){
-                  return next(err)
-              }
-              else{
-                  return res.status(200).send('logout')
-              }
-          })
-      }
+    static getAllUsers(req, res) {
+        UserModel.find({}, (err, users) => {
+            if (err) throw err;
+            res.send({ status: true, data: users })
+        })
     }
-
-
 }
