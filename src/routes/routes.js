@@ -14,6 +14,8 @@ router.post('/login', UserAuth.login);
 
 router.post('/patient/:uid', UserAuth.storeUserForLoginPerson);
 
+router.post('/doctor/:model', UserAuth.getSelectedDoctor);
+
 router.get('/users', UserAuth.getAllUsers);
 
 router.get('/dashboard', UserAuth.checkLoggedIn);

@@ -33,6 +33,7 @@ export class UserAuth {
             }
             else {
                 req.session.user = user;
+                req.session.save();
                 return res.status(200).send({ status: true, data: user })
             }
 
@@ -69,6 +70,14 @@ export class UserAuth {
         UserModel.find({}, (err, users) => {
             if (err) throw err;
             res.send({ status: true, data: users })
+        })
+    }
+
+    static getSelectedDoctor(req,res){
+        let model = req.params.model;
+        let patientModel = mongooose.model(model,pSchema);        
+        patientModel.find({},(err,users)=>{
+            res.send({status: true, data:users})
         })
     }
 
