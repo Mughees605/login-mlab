@@ -12,7 +12,7 @@ export const PatientSchema = new mongooose.Schema({
     patientdis: { type: String },
     patientmed: { type: String },
     cost: { type: Number },
-    Date: { type: String, default: new Date().getMilliseconds() },
+    Date: { type: String, default: new Date().getTime() },
     gender: { type: String }
 })
 
