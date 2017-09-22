@@ -6,7 +6,7 @@ export class PatientController {
     constructor() { }
     static storeUserForLoginPerson(req, res) {
         let { did } = req.params;
-        const { firstname, lastname, patientdis, patientmed, cost, Date } = req.body;
+        const { firstname, lastname, patientdis, patientmed, cost, Date, gender } = req.body;
         let DoctorCollection = mongooose.model(did, PatientSchema); // creates a new model for login doctor
 
         let newPatientData = {
@@ -15,7 +15,8 @@ export class PatientController {
             patientdis,
             patientmed,
             cost,
-            Date
+            Date,
+            gender
         }
 
         const newPatient = new DoctorCollection(newPatientData)

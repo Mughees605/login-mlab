@@ -12,7 +12,8 @@ export const PatientSchema = new mongooose.Schema({
     patientdis: { type: String },
     patientmed: { type: String },
     cost: { type: Number },
-    Date: { type: String}
+    Date: { type: String, default: new Date().getMilliseconds() },
+    gender: { type: String }
 })
 
 export const UserModel = mongooose.model('myuser', UserSchema);
